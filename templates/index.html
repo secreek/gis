@@ -1,12 +1,10 @@
-$def with (issues)
-<p>
-    $for issue in issues:
-        ____________<br>
-        $issue.html_url<br>
-        $issue.body<br>
-        $issue.created_at<br>
-        $issue.updated_at<br>
-        $issue.closed_at<br>
-        $issue.assignee.login<br>
-        $issue.body <br>
-</p>
+% for issue in issues:
+    ____________
+    ${issue.html_url}
+    ${issue.body}
+    ${issue.created_at}
+    ${issue.updated_at}
+    ${issue.closed_at}
+    ${issue.assignee.login}
+    ${issue.body}
+% endfor
