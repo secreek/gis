@@ -1,10 +1,16 @@
-% for issue in issues:
-    ____________
-    ${issue.html_url}
-    ${issue.body}
-    ${issue.created_at}
-    ${issue.updated_at}
-    ${issue.closed_at}
-    ${issue.assignee.login}
-    ${issue.body}
-% endfor
+<%!
+    from markdown2 import markdown
+%>
+<html>
+    <body>
+    % for issue in issues:
+        ${issue.html_url}<br>
+        ${markdown(issue.body)}
+        ${issue.comments_url}<br>
+        ${issue.created_at}<br>
+        ${issue.updated_at}<br>
+        ${issue.closed_at if issue.closed_at else ''}<br>
+        ${issue.assignee.login}<br>
+    % endfor
+    </body>
+</html>
