@@ -1,16 +1,19 @@
 <%!
     from markdown2 import markdown
 %>
-<html>
-    <body>
+<%inherit file="base.html"/>
+<%def name="main_container()">
     % for issue in issues:
+        -----------------------------------------<br>
         ${issue.html_url}<br>
+        ________________<br>
         ${markdown(issue.body)}
+        ________________<br>
         ${issue.comments_url}<br>
         ${issue.created_at}<br>
         ${issue.updated_at}<br>
-        ${issue.closed_at if issue.closed_at else ''}<br>
+        ${'%s%s' % (issue.closed_at, '<br>') if issue.closed_at else ''}
         ${issue.assignee.login}<br>
+        -----------------------------------------<br>
     % endfor
-    </body>
-</html>
+</%def>

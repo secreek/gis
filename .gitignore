@@ -1,2 +1,3 @@
 *.pyc
+*.sw*
 local_config.py
