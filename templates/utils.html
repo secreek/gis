@@ -1,0 +1,39 @@
+<%def name="navbar(active)">
+    <%
+        from collections import OrderedDict
+        nav_item_urls = OrderedDict()
+        nav_item_urls['Home'] = '/'
+        nav_item_urls['Assigned']='/assigned/'
+        nav_item_urls['Created']='/created/'
+        nav_item_urls['Mentioned']='/mentioned'
+        nav_item_urls['Subscribed']='/subscribed'
+    %>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/">GiS</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        % for item in nav_item_urls:
+                            % if item == active:
+                                <li class="active">
+                                    <a href="${nav_item_urls[item]}">${item}</a>
+                                </li>
+                            % else:
+                                <li>
+                                    <a href="${nav_item_urls[item]}">${item}</a>
+                                </li>
+                            % endif
+                        % endfor
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</%def>
