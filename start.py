@@ -2,7 +2,6 @@
 #-*- coding: utf-8 -*-
 
 import web
-from corelib.mako import render
 from view.index import index
 from view.hello import hello
 
