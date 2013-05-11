@@ -1,6 +1,3 @@
 ## Github Issues Summary
 
-* require python-github3
-* require web.py
-
-
+* Don't modify config.py, use local_config.py instead
