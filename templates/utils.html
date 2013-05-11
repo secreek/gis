@@ -1,14 +1,7 @@
+<%!
+    from corelib.consts import ISSUES_URL_MAPPING as issues_url_mapping
+%>
 <%def name="navbar(active)">
-    <%
-        from collections import OrderedDict
-        nav_item_urls = OrderedDict()
-        nav_item_urls['Home'] = '/'
-        nav_item_urls['Assigned']='/assigned/'
-        nav_item_urls['Created']='/created/'
-        nav_item_urls['Mentioned']='/mentioned'
-        nav_item_urls['Subscribed']='/subscribed'
-    %>
-
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -20,14 +13,14 @@
                 <a class="brand" href="/">GiS</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        % for item in nav_item_urls:
+                        % for item in issues_url_mapping:
                             % if item == active:
                                 <li class="active">
-                                    <a href="${nav_item_urls[item]}">${item}</a>
+                                    <a href="${issues_url_mapping[item]}">${item}</a>
                                 </li>
                             % else:
                                 <li>
-                                    <a href="${nav_item_urls[item]}">${item}</a>
+                                    <a href="${issues_url_mapping[item]}">${item}</a>
                                 </li>
                             % endif
                         % endfor

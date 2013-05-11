@@ -1,0 +1,25 @@
+<%!
+    from markdown2 import markdown
+%>
+<%inherit file="base.html"/>
+<%namespace name="utils" file="/utils.html"/>
+
+<%def name="nav_bar()">
+    ${utils.navbar(active)}
+</%def>
+
+<%def name="main_container()">
+    % for issue in issues:
+        -----------------------------------------<br>
+        ${issue.html_url}<br>
+        ________________<br>
+        ${markdown(issue.body)}
+        ________________<br>
+        ${issue.comments_url}<br>
+        ${issue.created_at}<br>
+        ${issue.updated_at}<br>
+        ${'%s%s' % (issue.closed_at, '<br>') if issue.closed_at else ''}
+        ${issue.assignee.login if issue.assignee else None}<br>
+        -----------------------------------------<br>
+    % endfor
+</%def>

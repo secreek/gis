@@ -3,6 +3,6 @@
 
 from corelib.mako import render
 
-class hello:
+class Hello:
     def GET(self, name):
         return render.hello(name = name)
