@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-import web
 from view.index import index
 from view.hello import hello
+from corelib.server import GISServer
 
 urls = (
     '/', 'index',
@@ -11,5 +11,5 @@ urls = (
     )
 
 if __name__ == "__main__":
-    app = web.application(urls, globals())
-    app.run()
+    server = GISServer(urls, globals())
+    server.run()

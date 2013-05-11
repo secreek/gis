@@ -1,3 +1,4 @@
+<%namespace name="utils" file="/utils.html"/>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,30 +37,16 @@
         ${self.bottom_script()}
     </body>
 </html>
-
-<%def name='page_title()'></%def>
-<%def name='css()'></%def>
-<%def name='bottom_script()'></%def>
-<%def name='mbody()'>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/">GiS</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/created/">Created</a></li>
-                        <li><a href="/assigned/">Assigned</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
+<%def name="nav_bar()">
+    ${utils.navbar('Home')}
+</%def>
+<%def name="page_title()">
+    GiS
+</%def>
+<%def name="css()"></%def>
+<%def name="bottom_script()"></%def>
+<%def name="mbody()">
+    ${self.nav_bar()}
     <div class="container">
         ${self.main_container()}
     </div>

@@ -10,5 +10,4 @@ class index:
         issues_by_relation_and_state = gis.get_all_issues()
         print issues_by_relation_and_state
         issues = gis.get_user_issues()
-        print 'hello world'
         return render.index(issues = issues)
