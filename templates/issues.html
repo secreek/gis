@@ -9,17 +9,50 @@
 </%def>
 
 <%def name="main_container()">
+    <div class="tabbable tabs-left">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#lOepn" data-toggle="tab">Open</a>
+            </li>
+            <li>
+                <a href="#lClosed" data-toggle="tab">Closed</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="lOpen">
+                ${issues_list(issues)}
+            </div>
+            <div class="tab-pane" id="lClosed">
+                ${issues_list(issues_closed)}
+            </div>
+        </div>
+        </div>
+</%def>
+
+<%def name="issues_list(issues)">
+    <div class="issues-list">
     % for issue in issues:
-        -----------------------------------------<br>
-        ${issue.html_url}<br>
-        ________________<br>
-        ${markdown(issue.body)}
-        ________________<br>
-        ${issue.comments_url}<br>
-        ${issue.created_at}<br>
-        ${issue.updated_at}<br>
-        ${'%s%s' % (issue.closed_at, '<br>') if issue.closed_at else ''}
-        ${issue.assignee.login if issue.assignee else None}<br>
-        -----------------------------------------<br>
+        <div class="item">
+            <div class="hd" style="display: block;">
+                ${'-' * 20}<br>
+                ${issue.title}<br>
+                ${issue.user.login if issue.user else ''}<br>
+                ${issue.created_at}<br>
+                ${'*' * 20}<br>
+            </div>
+            <div class="bd" style="display: block;">
+                ${issue.html_url}<br>
+                ${markdown(issue.body)}
+                ${issue.comments_url}<br>
+                ${issue.updated_at}<br>
+                ${'%s%s' % (issue.closed_at, '<br>') if issue.closed_at else ''}
+                ${issue.assignee.login if issue.assignee else ''}<br>
+                ${'@' * 20}<br>
+            </div>
     % endfor
+    </div>
+</%def>
+
+<%def name="bottom_script()">
+##show if clicked
 </%def>
